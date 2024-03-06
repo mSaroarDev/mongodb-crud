@@ -14,7 +14,15 @@ export async function POST(req) {
 
     return NextResponse.json(
       { msg: "success", data: res },
-      { status: 201, msg: "error" }
+      {
+        status: 201,
+        msg: "error",
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+          "Access-Control-Allow-Headers": "Content-Type, Authorization",
+        },
+      }
     );
   } catch (error) {
     return NextResponse.json({ msg: "error", data: error }, { status: 500 });
